@@ -27,17 +27,26 @@ function calculateOvertimePay(hourlyRate, hoursWorked) {
     }
 
 //Step 5: Write a function to calculate taxes - 15% deduction
+
 function calculateGrossPay(basePay, overtimePay) {
     return basePay + overtimePay;
 }
 
-function calculateTaxes(grossPay, rate = 0.15) {
-    return grossPay * rate;
+function calculateTaxes(grossPay, taxRate = 0.15) {
+    return grossPay * taxRate;
 }
+
+employees.forEach(({ name, hourlyRate, hoursWorked}) => {
+    const basePay = calculateBasePay(hourlyRate, hoursWorked);
+    const overtimePay = calculateOvertimePay(hourlyRate, hoursWorked);
+    const grossPay = calculateGrossPay(basePay + overtimePay);
+    const taxes = calculateTaxes(grossPay);
+    const netPay = grossPay - taxes;
+    });
 
 //step 6: create a payrollObject?
 const payroll = {
-    Employee Name: ${name}, Hours Worked: ${hoursWorked}, hourlyRate: 
+   name, hoursWorked, Hourly Rate: hourlyRate.toFixed(2), 
 }
 
 
@@ -51,7 +60,7 @@ employees.forEach(({name, hourlyRate, hoursWorked}) => {
     const taxes = calculateTaxes(grossPay, rate);
     const netPay = grossPay - taxes;
 
-});
+
 
 
 
