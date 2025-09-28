@@ -9,7 +9,8 @@ const employees = [
     {name: "Jeremy Fisher", hourlyRate: 3.75, hoursWorked: 101},
 ];
 
-employees.forEach(employee => console.log(`Employee Name: ${employee.name}, Hourly Rate: ${employee.hourlyRate}, Hours Worked: ${employee.hoursWorked}`));
+//console log note to test step 2
+//employees.forEach(employee => console.log(`Employee Name: ${employee.name}, Hourly Rate: ${employee.hourlyRate}, Hours Worked: ${employee.hoursWorked}`));
 
 
 //Step 3: Write function to calculate base pay
@@ -17,7 +18,7 @@ employees.forEach(employee => console.log(`Employee Name: ${employee.name}, Hour
 function calculateBasePay(hourlyRate, hoursWorked) {
     const baseHours = Math.min(hoursWorked, 40);
     return baseHours * hourlyRate; // hourly rate on hours up to and including 40
-}
+    }
 
 //Step 4: Write a function to calculate overtime pay
 function calculateOvertimePay(hourlyRate, hoursWorked) {
@@ -25,8 +26,13 @@ function calculateOvertimePay(hourlyRate, hoursWorked) {
     return overtimeHours * hourlyRate * 1.5; // time and a half on hours over 40
     }
 
-employees.forEach(({name, hourlyRate, hoursWorked}) => 
+employees.forEach(({name, hourlyRate, hoursWorked}) => {
+    const basePay = calculateBasePay(hourlyRate, hoursWorked);
+    const overtimePay = calculateOvertimePay(hourlyRate, hoursWorked);
+    const grossPay = basePay + overtimePay;
+    
 
-)
-
-console.log()
+console.log(`Employee Name: ${name}, Hours: ${hoursWorked}, 
+    Hourly Rate: ${hourlyRate.toFixed(2)}, Base Pay: $${basePay.toFixed(2)}, 
+    Overtime Pay: $${overtimePay.toFixed(2)}, Gross Pay: ${grossPay.toFixed(2)}`);
+})
