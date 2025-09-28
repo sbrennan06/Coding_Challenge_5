@@ -26,13 +26,36 @@ function calculateOvertimePay(hourlyRate, hoursWorked) {
     return overtimeHours * hourlyRate * 1.5; // time and a half on hours over 40
     }
 
+//Step 5: Write a function to calculate taxes - 15% deduction
+function calculateGrossPay(basePay, overtimePay) {
+    return basePay + overtimePay;
+}
+
+function calculateTaxes(grossPay, rate = 0.15) {
+    return grossPay * rate;
+}
+
+//step 6: create a payrollObject?
+const payroll = {
+    Employee Name: ${name}, Hours Worked: ${hoursWorked}, hourlyRate: 
+}
+
+
+
+//Step 7: Loop through array and log payroll object for each employee
+
 employees.forEach(({name, hourlyRate, hoursWorked}) => {
     const basePay = calculateBasePay(hourlyRate, hoursWorked);
     const overtimePay = calculateOvertimePay(hourlyRate, hoursWorked);
-    const grossPay = basePay + overtimePay;
-    
+    const grossPay = calculateGrossPay(basePay + overtimePay);
+    const taxes = calculateTaxes(grossPay, rate);
+    const netPay = grossPay - taxes;
 
-console.log(`Employee Name: ${name}, Hours: ${hoursWorked}, 
-    Hourly Rate: ${hourlyRate.toFixed(2)}, Base Pay: $${basePay.toFixed(2)}, 
-    Overtime Pay: $${overtimePay.toFixed(2)}, Gross Pay: ${grossPay.toFixed(2)}`);
+});
+
+
+
+
+
+console.log(`Employee Name: ${name} | Hours: ${hoursWorked} | Hourly Rate: $${hourlyRate.toFixed(2)} Base Pay: $${basePay.toFixed(2)} | Overtime Pay: $${overtimePay.toFixed(2)} | Gross Pay: $${grossPay.toFixed(2)}`)
 })
