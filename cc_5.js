@@ -36,30 +36,32 @@ function calculateTaxes(grossPay, taxRate = 0.15) {
     return grossPay * taxRate;
 }
 
-employees.forEach(({ name, hourlyRate, hoursWorked}) => {
-    const basePay = calculateBasePay(hourlyRate, hoursWorked);
-    const overtimePay = calculateOvertimePay(hourlyRate, hoursWorked);
-    const grossPay = calculateGrossPay(basePay + overtimePay);
-    const taxes = calculateTaxes(grossPay);
-    const netPay = grossPay - taxes;
-    });
-
-//step 6: create a payrollObject?
-const payroll = {
-   name, hoursWorked, Hourly Rate: hourlyRate.toFixed(2), 
+function calculateNetPay(grossPay, taxes){
+    return grossPay - taxes;
 }
-
-
-
-//Step 7: Loop through array and log payroll object for each employee
-
 employees.forEach(({name, hourlyRate, hoursWorked}) => {
     const basePay = calculateBasePay(hourlyRate, hoursWorked);
     const overtimePay = calculateOvertimePay(hourlyRate, hoursWorked);
-    const grossPay = calculateGrossPay(basePay + overtimePay);
-    const taxes = calculateTaxes(grossPay, rate);
-    const netPay = grossPay - taxes;
+    const grossPay = calculateGrossPay(basePay, overtimePay);
+    const taxes = calculateTaxes(grossPay);
+    const netPay = calculateNetPay(grossPay - taxes);
+    });
 
+//step 6: create a payrollObject?
+function processPayroll(employee, taxRate = 0.15) {
+    const { name, hourlyRate, hoursWorked } = employee;
+    const basePay
+}
+
+
+// //Step 7: Loop through array and log payroll object for each employee
+
+// employees.forEach(({name, hourlyRate, hoursWorked}) => {
+//     const basePay = calculateBasePay(hourlyRate, hoursWorked);
+//     const overtimePay = calculateOvertimePay(hourlyRate, hoursWorked);
+//     const grossPay = calculateGrossPay(basePay + overtimePay);
+//     const taxes = calculateTaxes(grossPay, rate);
+//     const netPay = calculateNetPay(grossPay - taxes);
 
 
 
